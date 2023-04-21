@@ -4,7 +4,7 @@ import sqlite3
 from twilio.rest import Client
 from random import randint
 from twilio.base.exceptions import TwilioRestException 
-client = Client("AC0f4d78257c5a4b666907df42cdf97b21", "2724dd2b55a8fd27a44c93821206ea4f")
+client = Client("[AccountSID]", "[AuthToken]")
 
 conn=sqlite3.connect('details.db')
 c=conn.cursor()
@@ -133,7 +133,7 @@ def Generate():
         global otp
         otp=randint(1000,9999)
         try:
-            client.messages.create(to="+919820337064",from_="+15856393394",body=otp)
+            client.messages.create(to="+[CountryCode][YourPhone]",from_="[TwilioPhoneNumber]",body=otp)
         except TwilioRestException as err:
             print(err)
         messagebox.showinfo("Disclaimer","A 4-digit OTP has been sent to your Registered no.")
